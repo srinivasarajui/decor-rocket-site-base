@@ -1,16 +1,26 @@
 ---
-
+import { supabase } from "../lib/supabase";
+import type { Database, Tables } from "../lib/database.types";
+const id =  import.meta.env.ACCOUNT_ID;
+const { data } = await supabase
+    .from("accounts")
+    .select()
+    .eq("id",id)
+    .returns<Tables<"accounts">[]>();
+const acc = data && data.length > 0 ? data[0] : undefined;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <h1>Astro new</h1>
+        <p>{acc?.name}</p>
+        <p>{acc?.slug}</p>
+    </body>
 </html>

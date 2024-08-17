@@ -10,8 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.13.3",
     "@astrojs/check": "^0.9.2",
+    "@supabase/supabase-js": "^2.45.1",
+    "astro": "^4.13.3",
+    "nvm": "^0.0.4",
     "typescript": "^5.5.4"
   }
 }
